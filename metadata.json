@@ -1,0 +1,5 @@
+{
+  "name": "RAG Chatbot Pro",
+  "description": "An advanced Retrieval-Augmented Generation chatbot with multi-document support, source citations, and conversation memory.",
+  "requestFramePermissions": []
+}
