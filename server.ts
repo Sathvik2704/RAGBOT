@@ -62,22 +62,7 @@ async function startServer() {
     }
   });
 
-  // Simple feedback storage (in-memory for this demo)
-  const feedbackStore: any[] = [];
-  app.post('/api/feedback', (req, res) => {
-    const { messageId, feedback, query, response, context } = req.body;
-    feedbackStore.push({
-      id: Date.now(),
-      messageId,
-      feedback,
-      query,
-      response,
-      context,
-      timestamp: new Date().toISOString()
-    });
-    console.log('Feedback received:', feedback);
-    res.json({ success: true });
-  });
+  // Feedback API removed - client now interacts directly with Supabase via RLS.
 
   // Error handler to prevent HTML responses for API errors
   app.use('/api', (err: any, req: any, res: any, next: any) => {
@@ -96,10 +81,10 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), 'dist');
+    const distPath = path.resolve(__dirname, 'dist');
     app.use(express.static(distPath));
     app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+      res.sendFile(path.resolve(distPath, 'index.html'));
     });
   }
 
