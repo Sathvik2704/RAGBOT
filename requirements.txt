@@ -1,0 +1,12 @@
+torch
+transformers
+fastapi
+uvicorn[standard]
+pillow
+safetensors
+huggingface_hub
+python-multipart
+soundfile
+numpy
+scipy
+sentencepiece
